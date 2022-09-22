@@ -92,3 +92,14 @@ def sales_data(url):
         sales = get_sales_data(url)
         sales.to_csv("sales.csv")
     return sales
+
+
+#########################################################################
+
+
+def get_opsd_data():
+    if os.path.exists('opsd.csv'):
+        return pd.read_csv('opsd.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/jenfly/opsd/master/opsd_germany_daily.csv')
+    df.to_csv('opsd.csv', index=False)
+    return df
